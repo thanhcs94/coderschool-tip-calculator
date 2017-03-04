@@ -15,15 +15,24 @@ import {
 } from 'react-native';
 
 export default class tip_calculator extends Component {
-  TIP_PERCENTAGES = [10, 15, 50];
+  TIP_PERCENTAGES = [0.1, 0.15, 0.5];
+  DEFAULT_SELECTED_TIP_PERCENTAGE_INDEX = 1;
 
   constructor(props) {
     super(props);
 
     this.state = {
       billAmount: 0,
-      tipAmount: 0
+      tipPercentage: 
+        this.TIP_PERCENTAGES[
+          this.DEFAULT_SELECTED_TIP_PERCENTAGE_INDEX
+        ]
     }
+
+    this.TIP_VIEW_OPTIONS = 
+      this.TIP_PERCENTAGES.map((tipPercentage) => {
+        return `${tipPercentage * 100}%`;
+      });
   }
 
   onBillAmountInputChangeText(text) {
@@ -32,12 +41,11 @@ export default class tip_calculator extends Component {
     })
   }
 
-  render() {
-    const TIP_OPTIONS = 
-      this.TIP_PERCENTAGES.map((tipPercentage) => {
-        return `${tipPercentage}%`;
-      });
+  getTipAmount() {
+    return this.state.billAmount * this.state.tipPercentage;
+  }
 
+  render() {
     return (
       <View>
         <Text>
@@ -55,9 +63,16 @@ export default class tip_calculator extends Component {
 
         <View>
           <SegmentedControlTab
-            values={ TIP_OPTIONS }
+            selectedIndex={ this.DEFAULT_SELECTED_TIP_PERCENTAGE_INDEX }
+            values={ this.TIP_VIEW_OPTIONS }
             onTabPress={index => console.log(index)}
             />
+        </View>
+
+        <View>
+          <Text>
+            Result: { this.getTipAmount() }
+          </Text>
         </View>
       </View>
     );
