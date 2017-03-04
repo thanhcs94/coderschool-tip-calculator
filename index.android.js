@@ -15,7 +15,7 @@ import {
 
 export default class tip_calculator extends Component {
   TIP_PERCENTAGES = [0.1, 0.15, 0.5];
-  DEFAULT_SELECTED_TIP_PERCENTAGE_INDEX = 1;
+  DEFAULT_SELECTED_TIP_PERCENTAGE_INDEX = 0;
 
   constructor(props) {
     super(props);
@@ -47,21 +47,19 @@ export default class tip_calculator extends Component {
   }
 
   getTipAmount() {
-    return this.state.billAmount * this.state.tipPercentage;
+    return (this.state.billAmount * this.state.tipPercentage) || 0;
   }
 
   render() {
     return (
       <View>
-        <Text>
+        <Text style={{ textAlign: "center", fontWeight: "600" }}>
           Tip Calculator
         </Text>
         
         <View>
-          <Text>
-            Bill amount: { this.state.billAmount }
-          </Text>
           <TextInput 
+            placeholder="Enter your bill amount here to calculate the tip"
             onChangeText={ this.onBillAmountInputChangeText.bind(this) }
             keyboardType='numeric' />
         </View>
@@ -76,7 +74,7 @@ export default class tip_calculator extends Component {
 
         <View>
           <Text>
-            Result: { this.getTipAmount() }
+            Result: { this.getTipAmount().toFixed(2) }
           </Text>
         </View>
       </View>
