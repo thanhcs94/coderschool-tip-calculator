@@ -5,6 +5,7 @@
  */
 
 import React, { Component } from 'react';
+import SegmentedControlTab from 'react-native-segmented-control-tab';
 import {
   AppRegistry,
   StyleSheet,
@@ -14,6 +15,8 @@ import {
 } from 'react-native';
 
 export default class tip_calculator extends Component {
+  TIP_PERCENTAGES = [10, 15, 50];
+
   constructor(props) {
     super(props);
 
@@ -30,6 +33,11 @@ export default class tip_calculator extends Component {
   }
 
   render() {
+    const TIP_OPTIONS = 
+      this.TIP_PERCENTAGES.map((tipPercentage) => {
+        return `${tipPercentage}%`;
+      });
+
     return (
       <View>
         <Text>
@@ -42,7 +50,14 @@ export default class tip_calculator extends Component {
           </Text>
           <TextInput 
             onChangeText={ this.onBillAmountInputChangeText.bind(this) }
-            keyboardType="numeric" />
+            keyboardType='numeric' />
+        </View>
+
+        <View>
+          <SegmentedControlTab
+            values={ TIP_OPTIONS }
+            onTabPress={index => console.log(index)}
+            />
         </View>
       </View>
     );
