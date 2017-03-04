@@ -5,6 +5,6 @@
  */
 
 import { AppRegistry } from 'react-native';
-import TipCalculator from './src/tip-calculator'
+import TipCalculator from './tip-calculator-app/tip-calculator'
 
 AppRegistry.registerComponent('tip_calculator', () => TipCalculator);

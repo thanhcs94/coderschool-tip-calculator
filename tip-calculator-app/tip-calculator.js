@@ -3,10 +3,11 @@ import SegmentedControlTab from 'react-native-segmented-control-tab';
 import {
   Text,
   View,
-  TextInput
+  TextInput,
+  Navigator
 } from 'react-native';
 
-export default class tip_calculator extends Component {
+export default class TipCalculator extends Component {
   TIP_PERCENTAGES = [0.1, 0.15, 0.5];
   DEFAULT_SELECTED_TIP_PERCENTAGE_INDEX = 0;
 
