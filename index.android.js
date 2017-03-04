@@ -9,45 +9,44 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  TextInput
 } from 'react-native';
 
 export default class tip_calculator extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      billAmount: 0,
+      tipAmount: 0
+    }
+  }
+
+  onBillAmountInputChangeText(text) {
+    this.setState({
+      billAmount: parseFloat(text) || 0
+    })
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
+      <View>
+        <Text>
+          Tip Calculator
         </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
+        
+        <View>
+          <Text>
+            Bill amount: { this.state.billAmount }
+          </Text>
+          <TextInput 
+            onChangeText={ this.onBillAmountInputChangeText.bind(this) }
+            keyboardType="numeric" />
+        </View>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
 
 AppRegistry.registerComponent('tip_calculator', () => tip_calculator);
