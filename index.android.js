@@ -8,7 +8,6 @@ import React, { Component } from 'react';
 import SegmentedControlTab from 'react-native-segmented-control-tab';
 import {
   AppRegistry,
-  StyleSheet,
   Text,
   View,
   TextInput
