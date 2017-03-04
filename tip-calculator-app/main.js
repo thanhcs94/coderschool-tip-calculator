@@ -5,20 +5,31 @@ import {
   Navigator 
 } from 'react-native';
 import TipCalculator from './tip-calculator';
+import Setting from './setting';
+import { STATES } from './constants';
 
 export default class Main extends Component {
-  onSettingBtnPress() {
-    console.log("Pressed");
+  renderScene(route, navigator) {
+    let mainContent;
+
+    switch (route.name) {
+      case STATES.setting.name:
+        mainContent = <Setting />;
+        break;
+
+      default:
+        mainContent = <TipCalculator />
+    }
+
+    return mainContent;
   }
 
   render() {
     return (
-      <View>
-        <Button 
-          onPress={ this.onSettingBtnPress.bind(this) }
-          title="Setting" />
-        <TipCalculator />
-      </View>
+      <Navigator
+        initialRoute={ STATES.main }
+        renderScene={ this.renderScene.bind(this) }
+      />
     );
   }
 }

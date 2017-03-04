@@ -3,9 +3,11 @@ import SegmentedControlTab from 'react-native-segmented-control-tab';
 import {
   Text,
   View,
+  Button,
   TextInput,
   Navigator
 } from 'react-native';
+import { STATES } from './constants';
 
 export default class TipCalculator extends Component {
   TIP_PERCENTAGES = [0.1, 0.15, 0.5];
@@ -44,9 +46,17 @@ export default class TipCalculator extends Component {
     return (this.state.billAmount * this.state.tipPercentage) || 0;
   }
 
+  onSettingBtnPress() {
+    console.log("Pressed");
+  }
+
   render() {
     return (
       <View>
+        <Button 
+          onPress={ this.onSettingBtnPress.bind(this) }
+          title="Setting" />
+
         <Text style={{ textAlign: "center", fontWeight: "600" }}>
           Tip Calculator
         </Text>
