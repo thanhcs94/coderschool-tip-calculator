@@ -41,6 +41,12 @@ export default class tip_calculator extends Component {
     })
   }
 
+  onChangeTipPercentage(index) {
+    this.setState({
+      tipPercentage: this.TIP_PERCENTAGES[index] || 0
+    })
+  }
+
   getTipAmount() {
     return this.state.billAmount * this.state.tipPercentage;
   }
@@ -65,7 +71,7 @@ export default class tip_calculator extends Component {
           <SegmentedControlTab
             selectedIndex={ this.DEFAULT_SELECTED_TIP_PERCENTAGE_INDEX }
             values={ this.TIP_VIEW_OPTIONS }
-            onTabPress={index => console.log(index)}
+            onTabPress={ this.onChangeTipPercentage.bind(this) }
             />
         </View>
 
