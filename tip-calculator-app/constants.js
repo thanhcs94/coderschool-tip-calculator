@@ -1,10 +1,10 @@
 export const STATES = {
   main: {
-    title: "Calculator page",
+    title: "Tip Calculator",
     name: "calculator"
   },
   setting: {
-    title: "Setting page",
+    title: "Setting",
     name: "setting"
   }
 }

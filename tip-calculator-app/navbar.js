@@ -9,6 +9,21 @@ import TipCalculator from './tip-calculator';
 import Setting from './setting';
 import { STATES } from './constants';
 
+const routeMapper = {
+  Title: getTitle,
+  LeftButton: () => (<Text></Text>),
+  RightButton: getRightButton
+}
+
+export default (
+  <Navigator.NavigationBar
+    routeMapper={ routeMapper }
+    navigationStyles={Navigator.NavigationBar.StylesIOS}
+  />
+);
+
+
+
 function getRightButton(route, navigator, index, navState) {
   switch (route.name) {
     case STATES.setting.name:
@@ -34,14 +49,8 @@ function getRightButton(route, navigator, index, navState) {
   }
 }
 
-const routeMapper = {
-  Title: () => (<Text></Text>),
-  LeftButton: () => (<Text></Text>),
-  RightButton: getRightButton
+function getTitle(route, navigator, index, navState) {
+  return (
+    <Text>{ route.title }</Text>
+  )
 }
-
-export default (
-  <Navigator.NavigationBar
-    routeMapper={ routeMapper }
-  />
-);

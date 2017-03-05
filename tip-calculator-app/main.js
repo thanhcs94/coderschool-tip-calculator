@@ -22,7 +22,9 @@ export default class Main extends Component {
     }
 
     return (
-      <View style={{paddingTop:50, backgroundColor:"white", height: "100%"}}>
+      <View 
+        style={{paddingTop:50, backgroundColor:"white", height: "100%"}}
+      >
         { mainContent }
       </View>
     );
