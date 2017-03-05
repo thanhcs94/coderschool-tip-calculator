@@ -46,17 +46,9 @@ export default class TipCalculator extends Component {
     return (this.state.billAmount * this.state.tipPercentage) || 0;
   }
 
-  onSettingBtnPress() {
-    console.log("Pressed");
-  }
-
   render() {
     return (
       <View>
-        <Button 
-          onPress={ this.onSettingBtnPress.bind(this) }
-          title="Setting" />
-
         <Text style={{ textAlign: "center", fontWeight: "600" }}>
           Tip Calculator
         </Text>

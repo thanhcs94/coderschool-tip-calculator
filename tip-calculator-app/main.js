@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { 
   View,
   Button,
-  Navigator 
+  Navigator,
+  TouchableOpacity
 } from 'react-native';
 import TipCalculator from './tip-calculator';
 import Setting from './setting';
 import { STATES } from './constants';
+import Navbar from './navbar';
 
 export default class Main extends Component {
   renderScene(route, navigator) {
@@ -27,6 +29,7 @@ export default class Main extends Component {
   render() {
     return (
       <Navigator
+        navigationBar={ Navbar }
         initialRoute={ STATES.main }
         renderScene={ this.renderScene.bind(this) }
       />
