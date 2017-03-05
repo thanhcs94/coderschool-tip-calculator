@@ -20,9 +20,6 @@ export default class Setting extends Component {
   }
 
   _init() {
-    var sceneTransitionDefaultValue =
-      this.SCENE_TRANSITIONS[0].value;
-
     SettingService
       // Get value from storage
       .getSceneTranslationSetting()
@@ -43,16 +40,20 @@ export default class Setting extends Component {
       if (value !== null) {
         return value;
 
-      } else {
+      // Occur in the first time app init
+      // AsyncStorage will return null value
+    } else {
+        // Then set the translation setting in storage
+        // with the default value
         return SettingService.setSceneTranslationSetting(
-          sceneTransitionDefaultValue
+          SettingService.DEFAULT_OPTION_SCENE_TRANSLATION.value
         );
       }
     }
   }
 
   render() {
-    var pickerItems = this.SCENE_TRANSITIONS.map(
+    var pickerItems = SettingService.OPTIONS_SCENE_TRANSLATION.map(
       (sceneTransition) => {
         return (
           <Picker.Item 
@@ -78,37 +79,6 @@ export default class Setting extends Component {
       </View>
     )
   }
-
-  SCENE_TRANSITIONS = [
-    {
-      label: 'Float From Right',
-      value: 'FloatFromRight'
-    },
-    {
-      label: 'Float From Left',
-      value: 'FloatFromLeft'
-    },
-    {
-      label: 'Float From Bottom',
-      value: 'FloatFromBottom'
-    },
-    {
-      label: 'Float From Bottom Android',
-      value: 'FloatFromBottomAndroid'
-    },
-    {
-      label: 'Swipe From Left',
-      value: 'SwipeFromLeft'
-    },
-    {
-      label: 'Horizontal Swipe Jump',
-      value: 'HorizontalSwipeJump'
-    },
-    {
-      label: 'Horizontal Swipe Jump From Right',
-      value: 'HorizontalSwipeJumpFromRight'
-    },
-  ];
 
   onSceneTransitionValueChange(value) {
     this.setState({
