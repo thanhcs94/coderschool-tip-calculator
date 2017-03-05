@@ -34,7 +34,7 @@ export default class Main extends Component {
     return (
       <Navigator
         navigationBar={ Navbar }
-        initialRoute={ STATES.main }
+        initialRoute={ STATES.setting }
         renderScene={ this.renderScene.bind(this) }
       />
     );

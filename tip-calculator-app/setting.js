@@ -5,13 +5,49 @@ import {
   Text,
   Picker
 } from 'react-native';
+import SettingService from './setting-service';
 
 export default class Setting extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      sceneTransition: this.SCENE_TRANSITIONS[0].value
+      loading: true,
+      sceneTransition: null
+    }
+
+    this._init();
+  }
+
+  _init() {
+    var sceneTransitionDefaultValue =
+      this.SCENE_TRANSITIONS[0].value;
+
+    SettingService
+      // Get value from storage
+      .getSceneTranslationSetting()
+      .then(onGetSceneTranslationSettingSuccess)
+
+      .catch((e) => {
+        // TODO: show error
+        console.error(e);
+      })
+      .then((value) => {
+        this.setState({
+          loading: false,
+          sceneTransition: value
+        });
+      })
+  
+    function onGetSceneTranslationSettingSuccess(value) {
+      if (value !== null) {
+        return value;
+
+      } else {
+        return SettingService.setSceneTranslationSetting(
+          sceneTransitionDefaultValue
+        );
+      }
     }
   }
 
@@ -26,6 +62,10 @@ export default class Setting extends Component {
         )
       }
     )
+
+    if (this.state.loading) {
+      return (<View><Text>Loading...</Text></View>);
+    }
 
     return (
       <View>
