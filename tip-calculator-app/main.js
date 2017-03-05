@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { 
   View,
-  Button,
   Navigator,
-  TouchableOpacity
 } from 'react-native';
 import TipCalculator from './tip-calculator';
 import Setting from './setting';
@@ -23,7 +21,11 @@ export default class Main extends Component {
         mainContent = <TipCalculator />
     }
 
-    return mainContent;
+    return (
+      <View style={{paddingTop:50, backgroundColor:"white", height: "100%"}}>
+        { mainContent }
+      </View>
+    );
   }
 
   render() {
