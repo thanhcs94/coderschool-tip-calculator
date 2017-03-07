@@ -1,5 +1,5 @@
 import SettingModel from '../models/setting-model';
-import { AsyncStorage } from 'react-native';
+import Utils from './../utils';
 
 export default class SettingStore {
   constructor() {
@@ -21,28 +21,22 @@ export default class SettingStore {
       });
   }
 
-  async setSettingToStorage() {
-    try {
-      return await AsyncStorage.setItem(
-        this.STORAGE_KEY, 
-        this.setting.toString()
-      );
-
-    } catch (e) {
-      Promise.reject(e);
-    }
+  // Async function
+  setSettingToStorage() {
+    return Utils.setToStorage(
+      this.STORAGE_KEY, 
+      this.setting.toString()
+    );
   }
 
-  async getSettingFromStorage(setting) {
-    try {
-      return await AsyncStorage.getItem(this.STORAGE_KEY);
-
-    } catch (e) {
-      Promise.reject(e);
-    }
+  // Async function
+  getSettingFromStorage() {
+    return Utils.getFromStorage(
+      this.STORAGE_KEY
+    );
   }
 
-  async getSetting() {
+  getSetting() {
     return this.setting;
   }
 
