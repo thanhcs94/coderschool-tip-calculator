@@ -13,46 +13,6 @@ export default class Setting extends Component {
 
     this.SCENE_TRANSLATION_OPTIONS = 
       this.props.settingStore.getSceneTranslationOptions();
-
-    this.state = {
-      loading: true,
-      sceneTransition: null
-    }
-
-    this._init();
-  }
-
-  _init() {
-    SettingService
-      // Get value from storage
-      .getSceneTranslationSetting()
-      .then(onGetSceneTranslationSettingSuccess)
-
-      .catch((e) => {
-        // TODO: show error
-        console.error(e);
-      })
-      .then((value) => {
-        this.setState({
-          loading: false,
-          sceneTransition: value
-        });
-      })
-  
-    function onGetSceneTranslationSettingSuccess(value) {
-      if (value !== null) {
-        return value;
-
-      // Occur in the first time app init
-      // AsyncStorage will return null value
-    } else {
-        // Then set the translation setting in storage
-        // with the default value
-        return SettingService.setSceneTranslationSetting(
-          SettingService.DEFAULT_OPTION_SCENE_TRANSLATION.value
-        );
-      }
-    }
   }
 
   render() {
