@@ -3,10 +3,16 @@ import {
   View,
   Navigator,
 } from 'react-native';
-import TipCalculator from './tip-calculator';
-import Setting from './setting';
+
 import { STATES } from './constants';
-import Navbar from './navbar';
+
+import TipCalculator from './components/tip-calculator';
+import Setting from './components/setting';
+import Navbar from './components/navbar';
+
+import SettingStore from './stores/setting-store';
+
+var settingStore = new SettingStore();
 
 export default class Main extends Component {
   renderScene(route, navigator) {
@@ -14,7 +20,7 @@ export default class Main extends Component {
 
     switch (route.name) {
       case STATES.setting.name:
-        mainContent = <Setting />;
+        mainContent = <Setting settingStore={ settingStore } />;
         break;
 
       default:

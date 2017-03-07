@@ -5,7 +5,6 @@ import {
   Text,
   Picker
 } from 'react-native';
-import SettingService from './setting-service';
 
 export default class Setting extends Component {
   constructor(props) {

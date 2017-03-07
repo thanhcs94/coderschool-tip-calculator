@@ -5,8 +5,7 @@ import {
   Navigator,
   TouchableOpacity
 } from 'react-native';
-import TipCalculator from './tip-calculator';
-import Setting from './setting';
+
 import { STATES } from './constants';
 
 const routeMapper = {
