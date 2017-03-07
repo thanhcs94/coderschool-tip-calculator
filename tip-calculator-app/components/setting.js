@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react';
 import React, { Component } from 'react';
 import { 
   AsyncStorage,
@@ -6,7 +7,8 @@ import {
   Picker
 } from 'react-native';
 
-export default class Setting extends Component {
+
+class Setting extends Component {
 
   constructor(props) {
     super(props);
@@ -48,6 +50,8 @@ export default class Setting extends Component {
     );
   }
 }
+
+export default observer(Setting);
 
 Setting.propTypes = {
 	settingStore: React.PropTypes.object.isRequired

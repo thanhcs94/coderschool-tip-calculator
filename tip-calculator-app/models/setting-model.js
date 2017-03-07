@@ -1,7 +1,11 @@
+import {extendObservable} from 'mobx';
+
 export default class SettingModel {
   constructor(setting) {
     setting = setting || {};
-    this.sceneTranslation = setting.sceneTranslation;
+    extendObservable(this, {
+      sceneTranslation: setting.sceneTranslation
+    });
   }
 
   toString() {
