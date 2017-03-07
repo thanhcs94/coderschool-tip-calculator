@@ -7,6 +7,9 @@
     "test": "jest"
   },
   "dependencies": {
+    "mobx": "^3.1.4",
+    "mobx-react": "^4.1.2",
+    "mobx-react-devtools": "^4.2.11",
     "react": "15.4.2",
     "react-native": "0.42.0",
     "react-native-segmented-control-tab": "^2.0.1"
