@@ -7,7 +7,7 @@ import {
   TextInput,
   Navigator
 } from 'react-native';
-import { STATES } from './constants';
+import { STATES } from '../constants';
 
 export default class TipCalculator extends Component {
   TIP_PERCENTAGES = [0.1, 0.15, 0.5];

@@ -6,7 +6,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-import { STATES } from './constants';
+import { STATES } from '../constants';
 
 const routeMapper = {
   Title: getTitle,

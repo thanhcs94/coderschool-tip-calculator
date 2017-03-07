@@ -15,7 +15,7 @@ export default class Setting extends Component {
       this.props.settingStore.getSceneTranslationOptions();
     
     this.settingModel =
-      this.props.getSetting();
+      this.props.settingStore.getSetting();
   }
 
   render() {
