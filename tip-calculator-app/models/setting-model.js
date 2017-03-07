@@ -9,4 +9,8 @@ export default class SettingModel {
       sceneTranslation: this.sceneTranslation
     })
   }
+
+  setSceneTranslation(value) {
+    this.sceneTranslation = value;
+  }
 }

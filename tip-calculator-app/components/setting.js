@@ -13,6 +13,9 @@ export default class Setting extends Component {
 
     this.SCENE_TRANSLATION_OPTIONS = 
       this.props.settingStore.getSceneTranslationOptions();
+    
+    this.settingModel =
+      this.props.getSetting();
   }
 
   render() {
@@ -27,26 +30,22 @@ export default class Setting extends Component {
       }
     )
 
-    if (this.state.loading) {
-      return (<View><Text>Loading...</Text></View>);
-    }
-
     return (
       <View>
         <Text>Scene Transitions</Text>
           <Picker 
-            selectedValue={ this.state.sceneTransition }
-            onValueChange={ this.onSceneTransitionValueChange.bind(this) } >
+            selectedValue={ this.settingModel.sceneTranslation }
+            onValueChange={ this.handleSceneTransitionChange.bind(this) } >
             { pickerItems }
           </Picker>
       </View>
     )
   }
 
-  onSceneTransitionValueChange(value) {
-    this.setState({
-      sceneTransition: value
-    });
+  handleSceneTransitionChange(value) {
+    this.settingModel.setSceneTranslation(
+      value
+    );
   }
 }
 
