@@ -7,8 +7,12 @@ import {
 } from 'react-native';
 
 export default class Setting extends Component {
+
   constructor(props) {
     super(props);
+
+    this.SCENE_TRANSLATION_OPTIONS = 
+      this.props.settingStore.getSceneTranslationOptions();
 
     this.state = {
       loading: true,
@@ -52,7 +56,7 @@ export default class Setting extends Component {
   }
 
   render() {
-    var pickerItems = SettingService.OPTIONS_SCENE_TRANSLATION.map(
+    var pickerItems = this.SCENE_TRANSLATION_OPTIONS.map(
       (sceneTransition) => {
         return (
           <Picker.Item 
@@ -84,4 +88,8 @@ export default class Setting extends Component {
       sceneTransition: value
     });
   }
+}
+
+Setting.propTypes = {
+	settingStore: React.PropTypes.object.isRequired
 }
