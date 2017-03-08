@@ -39,7 +39,6 @@ export default class Navbar {
   }
 
   _getSaveBtn(route, navigator, index, navState) {
-    console.log("get save btn")
     return (
       <TouchableOpacity onPress={ onSaveBtnPress.bind(this) }>
         <Text>Save</Text>
