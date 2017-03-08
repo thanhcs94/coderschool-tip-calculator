@@ -25,7 +25,7 @@ export default observer(class Main extends Component {
       loading: true
     }
 
-    this.settingModel = settingStore.getSetting();
+    this.settingModel = settingStore.getSettingModel();
     this.navbarElement = navbar.getNavbarElement();
 
     this

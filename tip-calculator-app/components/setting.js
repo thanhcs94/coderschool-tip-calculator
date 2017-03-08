@@ -17,7 +17,7 @@ class Setting extends Component {
       this.props.settingStore.getSceneTranslationOptions();
     
     this.settingModel =
-      this.props.settingStore.getSetting();
+      this.props.settingStore.getSettingModel();
   }
 
   render() {

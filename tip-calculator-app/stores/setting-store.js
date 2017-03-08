@@ -3,7 +3,7 @@ import Utils from './../utils';
 
 export default class SettingStore {
   constructor() {
-    this.setting = new SettingModel();
+    this.settingModel = new SettingModel();
   }
 
   init() {
@@ -15,18 +15,18 @@ export default class SettingStore {
         // then storageValue will be null
         if (storageValue === null) {
           // Run with default value
-          this.setting.sceneTranslation =
+          this.settingModel.sceneTranslation =
             this.getDefaultSceneTranslationOptions().value;
 
         } else {
           let settingObject = JSON.parse(storageValue);
 
           for (key in settingObject) {
-            this.setting[ key ] = settingObject[ key ];
+            this.settingModel[ key ] = settingObject[ key ];
           }
         }
 
-        return this.setting;
+        return this.settingModel;
       });
   }
 
@@ -34,7 +34,7 @@ export default class SettingStore {
   setSettingToStorage() {
     return Utils.setToStorage(
       this.STORAGE_KEY, 
-      this.setting.toString()
+      this.settingModel.toString()
     );
   }
 
@@ -45,8 +45,8 @@ export default class SettingStore {
     );
   }
 
-  getSetting() {
-    return this.setting;
+  getSettingModel() {
+    return this.settingModel;
   }
 
   getSceneTranslationOptions() {
