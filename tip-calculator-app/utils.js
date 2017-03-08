@@ -10,7 +10,9 @@ async function getFromStorage(key) {
     return await AsyncStorage.getItem(key);
 
   } catch (e) {
-    Promise.reject(e);
+    // TODO test the reject case here,
+    // currently, it may not work
+    return Promise.reject(e);
   }
 }
 
@@ -21,6 +23,6 @@ async function setToStorage(key, stringValue) {
     );
 
   } catch (e) {
-    Promise.reject(e);
+    return Promise.reject(e);
   }
 }

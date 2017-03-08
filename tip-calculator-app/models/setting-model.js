@@ -9,7 +9,7 @@ export default class SettingModel {
   }
 
   toString() {
-    JSON.stringify({
+    return JSON.stringify({
       sceneTranslation: this.sceneTranslation
     })
   }

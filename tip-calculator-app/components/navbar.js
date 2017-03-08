@@ -49,10 +49,10 @@ export default class Navbar {
       this
         .settingStore
         .setSettingToStorage()
-        .then(
-          navigator.pop, 
-          (error) => console.log(error)
-        );
+        .then((resp) => {
+          navigator.pop();
+        })
+        .catch((error) => { console.log(error) })
     }
   }
 
