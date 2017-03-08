@@ -55,7 +55,10 @@ export default observer(class Main extends Component {
         initialRoute={ DEFAULT_STATE }
         renderScene={ this.renderScene.bind(this) }
         configureScene={() => {
-          return Navigator.SceneConfigs[this.settingModel.sceneTranslation || settingStore.getDefaultSceneTranslationOptions().value]
+          return Navigator.SceneConfigs[
+            this.settingModel.sceneTranslation || 
+            settingStore.getDefaultSceneTranslationOptions().value
+          ]
         }}
       />
     );
