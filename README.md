@@ -44,7 +44,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<iframe src="https://drive.google.com/file/d/0B7ON4iknhU_6QVJMeE9BM2k5dVE/preview" width="640" height="480"></iframe>
+https://drive.google.com/file/d/0B7ON4iknhU_6QVJMeE9BM2k5dVE/view
 
 ## Notes
 
