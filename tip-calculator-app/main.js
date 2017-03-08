@@ -21,8 +21,29 @@ export default observer(class Main extends Component {
     super(props);
     let navbar = new Navbar(settingStore);
 
+    this.state = {
+      loading: true
+    }
+
     this.settingModel = settingStore.getSetting();
     this.navbarElement = navbar.getNavbarElement();
+
+    this
+      ._init()
+      .catch((error) => {
+        console.log(error);
+      })
+      .then(() => {
+        this.setState({
+          loading: false
+        })
+      })
+  }
+
+  _init() {
+    return Promise.all([
+      settingStore.init() // Init setting
+    ]);
   }
 
   renderScene(route, navigator) {
@@ -51,6 +72,10 @@ export default observer(class Main extends Component {
   }
 
   render() {
+    if (this.state.loading) {
+      return (<Text>Loading App...</Text>);
+    }
+
     return (
       <Navigator
         navigationBar={ this.navbarElement }

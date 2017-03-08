@@ -4,20 +4,29 @@ import Utils from './../utils';
 export default class SettingStore {
   constructor() {
     this.setting = new SettingModel();
+  }
 
-    // Load the setting from local storage
-    this.getSettingFromStorage()
+  init() {
+    return this
+      // Load the setting from storage
+      .getSettingFromStorage()
       .then((storageValue) => {
+        // If this is the first time open app, 
+        // then storageValue will be null
         if (storageValue === null) {
+          // Run with default value
           this.setting.sceneTranslation =
             this.getDefaultSceneTranslationOptions().value;
 
         } else {
           let settingObject = JSON.parse(storageValue);
+
           for (key in settingObject) {
             this.setting[ key ] = settingObject[ key ];
           }
         }
+
+        return this.setting;
       });
   }
 
