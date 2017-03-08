@@ -2,6 +2,7 @@
 - Calculator screen (default screen) has:
   - Input for bill amount
   - Tip ratio option, implemented with third party package
+  - The tip amount result
 
 - Setting screen has:
   - Selection with provided options for scene translation
