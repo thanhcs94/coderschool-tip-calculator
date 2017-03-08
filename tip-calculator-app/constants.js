@@ -8,3 +8,5 @@ export const STATES = {
     name: "setting"
   }
 }
+
+export const DEFAULT_STATE = STATES.main;

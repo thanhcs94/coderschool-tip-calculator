@@ -22,12 +22,12 @@ class Setting extends Component {
 
   render() {
     var pickerItems = this.SCENE_TRANSLATION_OPTIONS.map(
-      (sceneTransition) => {
+      (sceneTranslation) => {
         return (
           <Picker.Item 
-            key={ sceneTransition.value }
-            value={ sceneTransition.value }
-            label={ sceneTransition.label } />
+            key={ sceneTranslation.value }
+            value={ sceneTranslation.value }
+            label={ sceneTranslation.label } />
         )
       }
     )

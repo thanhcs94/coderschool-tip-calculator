@@ -1,10 +1,12 @@
+import { observer } from 'mobx-react';
 import React, { Component } from 'react';
 import { 
   View,
   Navigator,
+  Text
 } from 'react-native';
 
-import { STATES } from './constants';
+import { STATES, DEFAULT_STATE } from './constants';
 
 import TipCalculator from './components/tip-calculator';
 import Setting from './components/setting';
@@ -14,13 +16,23 @@ import SettingStore from './stores/setting-store';
 
 var settingStore = new SettingStore();
 
-export default class Main extends Component {
+export default observer(class Main extends Component {
+  constructor(props) {
+    super(props);
+
+    this.settingModel = settingStore.getSetting();
+  }
+
   renderScene(route, navigator) {
     let mainContent;
 
     switch (route.name) {
       case STATES.setting.name:
-        mainContent = <Setting settingStore={ settingStore } />;
+        mainContent = (
+          <View>
+            <Setting settingStore={ settingStore } />
+          </View>
+        );
         break;
 
       default:
@@ -40,9 +52,12 @@ export default class Main extends Component {
     return (
       <Navigator
         navigationBar={ Navbar }
-        initialRoute={ STATES.setting }
+        initialRoute={ DEFAULT_STATE }
         renderScene={ this.renderScene.bind(this) }
+        configureScene={() => {
+          return Navigator.SceneConfigs[this.settingModel.sceneTranslation || settingStore.getDefaultSceneTranslationOptions().value]
+        }}
       />
     );
   }
-}
+})

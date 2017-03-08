@@ -16,5 +16,6 @@ export default class SettingModel {
 
   setSceneTranslation(value) {
     this.sceneTranslation = value;
+    console.log(this.sceneTranslation);
   }
 }
