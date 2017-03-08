@@ -9,48 +9,71 @@ import {
 
 import { STATES } from '../constants';
 
-const routeMapper = {
-  Title: getTitle,
-  LeftButton: () => (<Text></Text>),
-  RightButton: getRightButton
-}
+export default class Navbar {
+  constructor(settingStore) {
+    this.settingStore = settingStore;
 
-export default (
-  <Navigator.NavigationBar
-    routeMapper={ routeMapper }
-    navigationStyles={Navigator.NavigationBar.StylesIOS}
-  />
-);
-
-
-
-function getRightButton(route, navigator, index, navState) {
-  switch (route.name) {
-    case STATES.setting.name:
-      return (
-        <TouchableOpacity onPress={ onSaveBtnPress }>
-          <Text>Save</Text>
-        </TouchableOpacity>
-      );
-    default:
-      return (
-        <TouchableOpacity onPress={ onSettingBtnPress }>
-          <Text>Setting</Text>
-        </TouchableOpacity>
-      );
+    this.routeMapper = {
+      Title: this._getTitle.bind(this),
+      LeftButton: () => (<Text></Text>),
+      RightButton: this._getRightButton.bind(this)
+    }
   }
 
-  function onSaveBtnPress() {
-    navigator.pop();
+  getNavbarElement() {
+    return (
+      <Navigator.NavigationBar
+        routeMapper={ this.routeMapper }
+        navigationStyles={Navigator.NavigationBar.StylesIOS}
+      />
+    );
   }
 
-  function onSettingBtnPress() {
-    navigator.push(STATES.setting);
+  _getRightButton(route, navigator, index, navState) {
+    switch (route.name) {
+      case STATES.setting.name:
+        return this._getSaveBtn(...arguments);
+      default:
+        return this._getSettingBtn(...arguments);
+    }
   }
-}
 
-function getTitle(route, navigator, index, navState) {
-  return (
-    <Text>{ route.title }</Text>
-  )
+  _getSaveBtn(route, navigator, index, navState) {
+    console.log("get save btn")
+    return (
+      <TouchableOpacity onPress={ onSaveBtnPress.bind(this) }>
+        <Text>Save</Text>
+      </TouchableOpacity>
+    );
+
+    function onSaveBtnPress() {
+      this
+        .settingStore
+        .setSettingToStorage()
+        .then(
+          navigator.pop, 
+          (error) => console.log(error)
+        );
+    }
+  }
+
+  _getSettingBtn(route, navigator, index, navState) {
+    return (
+      <TouchableOpacity 
+        onPress={ onSettingBtnPress.bind(this) }
+      >
+        <Text>Setting</Text>
+      </TouchableOpacity>
+    );
+
+    function onSettingBtnPress() {
+      navigator.push(STATES.setting);
+    }
+  }
+
+  _getTitle(route, navigator, index, navState) {
+    return (
+      <Text>{ route.title }</Text>
+    )
+  }
 }

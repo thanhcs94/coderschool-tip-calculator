@@ -19,8 +19,10 @@ var settingStore = new SettingStore();
 export default observer(class Main extends Component {
   constructor(props) {
     super(props);
+    let navbar = new Navbar(settingStore);
 
     this.settingModel = settingStore.getSetting();
+    this.navbarElement = navbar.getNavbarElement();
   }
 
   renderScene(route, navigator) {
@@ -51,7 +53,7 @@ export default observer(class Main extends Component {
   render() {
     return (
       <Navigator
-        navigationBar={ Navbar }
+        navigationBar={ this.navbarElement }
         initialRoute={ DEFAULT_STATE }
         renderScene={ this.renderScene.bind(this) }
         configureScene={() => {
