@@ -44,7 +44,12 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
+### Calculator function
+
 <img src='http://i.imgur.com/yNsuXvf.gif' />
+
+### Setting function
+
 <img src='http://i.imgur.com/oympYPe.gif' />
 
 ## Notes
