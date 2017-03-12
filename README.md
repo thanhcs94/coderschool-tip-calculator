@@ -44,7 +44,8 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-https://drive.google.com/file/d/0B7ON4iknhU_6QVJMeE9BM2k5dVE/view
+<img src='http://i.imgur.com/yNsuXvf.gif' />
+<img src='http://i.imgur.com/oympYPe.gif' />
 
 ## Notes
 
