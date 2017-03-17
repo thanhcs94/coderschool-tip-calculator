@@ -1,0 +1,1 @@
+`navigator-sences` includes the big components that will be rendered for each navigator sence.
