@@ -6,5 +6,6 @@
 
 import { AppRegistry } from 'react-native';
 import TipCalculatorApp from './tip-calculator-app/main'
+import FlicksApp from './flicks-app/main';
 
-AppRegistry.registerComponent('tip_calculator', () => TipCalculatorApp);
+AppRegistry.registerComponent('tip_calculator', () => FlicksApp);
