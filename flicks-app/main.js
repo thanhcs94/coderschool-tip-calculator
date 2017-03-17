@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
+import NowPlayingScene from './navigator-scenes/now-playing-scene';
 import {
-  Text
+  View, Text
 } from 'react-native';
 
 export default class FlicksApp extends Component {
   render() {
     return (
-      <Text>This is flicks application</Text>
+      <View>
+        <Text>This is flicks application</Text>
+        <NowPlayingScene />
+      </View>
     )
   }
 }
